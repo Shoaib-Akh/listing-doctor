@@ -1,4 +1,3 @@
-// app/doctors/[id]/page.jsx
 
 import dbConnect from "../../../../utils/dbConnect.mjs";
 import Doctor from "../../../../models/Doctor.mjs";
@@ -6,7 +5,6 @@ import Doctor from "../../../../models/Doctor.mjs";
 const DoctorDetails = async ({ params }) => {
   const { id } = params;
 
-  await dbConnect();
 
   let doctor;
   try {
@@ -15,6 +13,7 @@ const DoctorDetails = async ({ params }) => {
     console.error("Error fetching doctor:", error);
     doctor = null;
   }
+  // await dbConnect();
 
   if (!doctor) {
     return (

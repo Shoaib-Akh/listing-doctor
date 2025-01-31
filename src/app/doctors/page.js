@@ -8,9 +8,9 @@ const DoctorsPage = () => {
   const [doctors, setDoctors] = useState([]);
   const [cities, setCities] = useState([]);
   const [specialties, setSpecialties] = useState([]);
-  const [filters, setFilters] = useState({ city: "", specialty: "" });
+  const [filters, setFilters] = useState({ search: "",city: "", specialty: "",  });
   const [loading, setLoading] = useState(true);
-
+console.log("filters",filters);
   // Fetch doctors when filters change
   useEffect(() => {
     fetchDoctors();
@@ -40,7 +40,7 @@ const DoctorsPage = () => {
     }
   };
 
-  // Handle dropdown change and update filters
+  // Handle dropdown and search input change, update filters
   const handleFilterChange = (type, value) => {
     setFilters((prev) => ({ ...prev, [type]: value }));
   };
@@ -51,12 +51,13 @@ const DoctorsPage = () => {
         Find Your Doctor
       </h1>
 
-      {/* Filter Component */}
+      {/* Filter Component with search handler */}
       <Filter
         cities={cities}
         specialties={specialties}
         selectedCity={filters.city}
         selectedSpecialty={filters.specialty}
+        search={filters.search}
         onFilterChange={handleFilterChange}
       />
 

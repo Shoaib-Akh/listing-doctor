@@ -1,5 +1,4 @@
-// components/Filter.js
-import { FaCity, FaUserMd } from "react-icons/fa";
+import { FaCity, FaUserMd, FaSearch } from "react-icons/fa";
 
 const Filter = ({
   cities,
@@ -7,48 +6,64 @@ const Filter = ({
   selectedCity,
   selectedSpecialty,
   onFilterChange,
+  search,
 }) => {
   return (
-    <div className="flex flex-col sm:flex-row justify-center items-center gap-6 p-8 bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-500 rounded-xl shadow-2xl backdrop-blur-lg bg-opacity-90 transition-all duration-300">
-      
-      {/* City Filter */}
-      <div className="relative w-full max-w-xs">
-        <label className=" text-white text-lg font-semibold mb-2 flex items-center gap-2">
-          <FaCity className="text-white" /> City
-        </label>
-        <div className="relative">
+    <div className="w-full max-w-4xl mx-auto p-6 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-3xl shadow-xl backdrop-blur-md bg-opacity-80">
+      {/* Responsive Grid Layout */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        {/* Search Input */}
+        <div className="relative w-full">
+          <label className="text-gray-600 text-lg font-semibold mb-2 flex items-center gap-2">
+            <FaSearch className="text-gray-600" /> Search
+          </label>
+          <input
+            type="text"
+            value={search}
+            placeholder="Search doctors..."
+            className="w-full p-4 rounded-lg border border-transparent bg-white/20 text-gray-600 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-300 ease-in-out"
+            onChange={(e) => onFilterChange("search", e.target.value)}
+          />
+        </div>
+
+        {/* City Filter */}
+        <div className="relative w-full">
+          <label className="text-gray-600 text-lg font-semibold mb-2 flex items-center gap-2">
+            <FaCity className="text-gray-600" /> City
+          </label>
           <select
-            className="peer select w-full p-3 pr-10 rounded-lg border border-white/40 bg-white/20 text-gray-600 font-medium placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 hover:bg-white/30 transition-all duration-300 appearance-none cursor-pointer"
+            className="w-full p-4 rounded-lg border border-transparent bg-white/20 text-gray-600 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-300 ease-in-out"
             value={selectedCity}
-            onChange={(e) => onFilterChange('city', e.target.value)}
+            onChange={(e) => onFilterChange("city", e.target.value)}
           >
-            <option value="" className="text-gray-900 font-medium">🌍 All Cities</option>
+            <option value="" className="text-black font-medium">
+              All Cities
+            </option>
             {cities.map((city) => (
-              <option key={city} value={city} className="text-gray-900 font-medium">
-                🏙️ {city}
+              <option key={city} value={city} className="text-black font-medium">
+                {city}
               </option>
             ))}
           </select>
-          {/* Improved Arrow */}
-         
         </div>
-      </div>
 
-      {/* Specialty Filter */}
-      <div className="relative w-full max-w-xs">
-        <label className=" text-white text-lg font-semibold mb-2 flex items-center gap-2">
-          <FaUserMd className="text-white" /> Specialty
-        </label>
-        <div className="relative">
+        {/* Specialty Filter */}
+        <div className="relative w-full">
+          <label className="text-gray-600 text-lg font-semibold mb-2 flex items-center gap-2">
+            <FaUserMd className="text-gray-600" /> Specialty
+          </label>
           <select
-            className="peer select w-full p-3 pr-10 rounded-lg border border-white/40 bg-white/20 text-gray-600 font-medium placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 hover:bg-white/30 transition-all duration-300 appearance-none cursor-pointer"
+            className="w-full p-4 rounded-lg border border-transparent bg-white/20 text-gray-600 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-300 ease-in-out"
             value={selectedSpecialty}
-            onChange={(e) => onFilterChange('specialty', e.target.value)}
+            onChange={(e) => onFilterChange("specialty", e.target.value)}
           >
-            <option value="" className="text-gray-900 font-medium">🩺 All Specialties</option>
+            <option value="" className="text-black font-medium">
+              All Specialties
+            </option>
             {specialties.map((specialty) => (
-              <option key={specialty} value={specialty} className="text-gray-900 font-medium">
-                🏥 {specialty}
+              <option key={specialty} value={specialty} className="text-black font-medium">
+                {specialty}
               </option>
             ))}
           </select>

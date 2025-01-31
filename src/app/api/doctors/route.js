@@ -10,13 +10,23 @@ export async function GET(request) {
     const { searchParams } = new URL(request.url);
     const city = searchParams.get('city');
     const specialty = searchParams.get('specialty');
+    const search = searchParams.get('search');
     const sort = searchParams.get('sort');
 
     const query = {};
 
-    // Apply filters based on city and specialty
+    // Apply filters based on city, specialty, and search terms
     if (city) query.city = city;
     if (specialty) query.specialty = specialty;
+
+    // Search functionality: filter by name or other attributes
+    if (search) {
+      query.$or = [
+        { name: new RegExp(search, 'i') }, // Case-insensitive search in name
+        // Other searchable fields can be added here
+        // { bio: new RegExp(search, 'i') },
+      ];
+    }
 
     let doctorsQuery = Doctor.find(query);
 

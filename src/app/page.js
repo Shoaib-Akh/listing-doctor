@@ -1,41 +1,27 @@
-
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="container mx-auto p-8">
-      <header className="text-center mb-8">
-        <h1 className="text-5xl font-bold">Welcome to the Doctor Listing App!</h1>
-        <p className="mt-4 text-lg text-gray-600">
-          Easily find and connect with top medical professionals in your area.
+    <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-cover bg-center" style={{ backgroundImage: "url('/background.jpg')" }}>
+      <div className="max-w-3xl w-full bg-white shadow-2xl rounded-3xl p-6 text-center backdrop-blur-lg bg-opacity-90 transform hover:scale-105 transition-all duration-500">
+        
+        <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700 mb-8 drop-shadow-lg p-2">
+          Welcome to Doctor Listing
+        </h1>
+        <p className="text-gray-800 text-2xl mb-10 font-medium leading-relaxed">
+          Connect with top medical professionals effortlessly. Explore specialists, read reviews, and schedule appointments with ease.
         </p>
-      </header>
-
-      <section className="mb-8">
-        <h2 className="text-3xl font-semibold mb-4">Why Choose Us?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-4 border rounded-lg">
-            <h3 className="text-xl font-medium mb-2">Comprehensive Listings</h3>
-            <p>Access a wide range of doctors across various specialties.</p>
-          </div>
-          <div className="p-4 border rounded-lg">
-            <h3 className="text-xl font-medium mb-2">Advanced Filtering</h3>
-            <p>Filter doctors by city, specialty, and more to find your ideal match.</p>
-          </div>
-          <div className="p-4 border rounded-lg">
-            <h3 className="text-xl font-medium mb-2">Detailed Profiles</h3>
-            <p>View comprehensive profiles with contact information and specialties.</p>
-          </div>
+        
+        <div className="flex justify-center space-x-6">
+          <Link href="/doctors">
+            <button className="px-10 py-4 bg-gradient-to-r from-blue-500 to-indigo-700 text-white font-bold text-xl rounded-full shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300">
+              Browse Doctors
+            </button>
+          </Link>
+         
         </div>
-      </section>
-
-      <section className="text-center mt-12">
-        <Link href="/doctors">
-          <button className="btn btn-primary text-white px-6 py-3 rounded-md text-lg">
-            Explore Doctors
-          </button>
-        </Link>
-      </section>
+      </div>
     </div>
   );
 }

@@ -19,12 +19,9 @@ export async function GET(request) {
     if (city) query.city = city;
     if (specialty) query.specialty = specialty;
 
-    // Search functionality: filter by name or other attributes
     if (search) {
       query.$or = [
-        { name: new RegExp(search, 'i') }, // Case-insensitive search in name
-        // Other searchable fields can be added here
-        // { bio: new RegExp(search, 'i') },
+        { name: new RegExp(search, 'i') }, 
       ];
     }
 

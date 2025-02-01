@@ -10,8 +10,6 @@ const DoctorsPage = () => {
   const [specialties, setSpecialties] = useState([]);
   const [filters, setFilters] = useState({ search: "",city: "", specialty: "",  });
   const [loading, setLoading] = useState(true);
-console.log("filters",filters);
-  // Fetch doctors when filters change
   useEffect(() => {
     fetchDoctors();
   }, [filters]);
@@ -25,11 +23,9 @@ console.log("filters",filters);
       if (res.status === 200) {
         setDoctors(res.data);
 
-        // Extract unique cities & specialties for dropdowns
         const uniqueCities = [...new Set(res.data.map((doc) => doc.city))];
         const uniqueSpecialties = [...new Set(res.data.map((doc) => doc.specialty))];
 
-        // Set dropdown values only if they are not already set
         if (cities.length === 0) setCities(uniqueCities);
         if (specialties.length === 0) setSpecialties(uniqueSpecialties);
       }
@@ -40,7 +36,6 @@ console.log("filters",filters);
     }
   };
 
-  // Handle dropdown and search input change, update filters
   const handleFilterChange = (type, value) => {
     setFilters((prev) => ({ ...prev, [type]: value }));
   };

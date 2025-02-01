@@ -3,8 +3,7 @@ import dbConnect from "../../../../utils/dbConnect.mjs";
 import Doctor from "../../../../models/Doctor.mjs";
 
 const DoctorDetails = async ({ params }) => {
-  const { id } = params;
-
+  const { id } = await params
 
   let doctor;
   try {

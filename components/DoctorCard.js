@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import { FaArrowRight } from 'react-icons/fa';
 
 const DoctorCard = ({ doctor }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,10 +32,11 @@ const DoctorCard = ({ doctor }) => {
         <p>{doctor.city}</p>
         <div className="card-actions justify-end">
           <Link href={`/doctors/${doctor._id}`} passHref>
-            <button className="btn btn-primary" onClick={handleViewDetails} disabled={isLoading}>
+            <div className="flex flex-row center gap-5" onClick={handleViewDetails} disabled={isLoading}>
               {isLoading  && <span className="loading loading-spinner loading-md text-primary"></span> }
-              View Details
-            </button>
+              <FaArrowRight className="text-gray-600" />    Book Appointment
+
+            </div>
           </Link>
         </div>
       </div>

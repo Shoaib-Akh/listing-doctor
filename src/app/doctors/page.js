@@ -42,11 +42,14 @@ const DoctorsPage = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-4xl font-bold text-center mb-6 text-primary">
+      {/* <h1 className="text-4xl font-bold text-center mb-6 text-primary">
         Find Your Doctor
-      </h1>
+      </h1> */}
 
       {/* Filter Component with search handler */}
+      <div className="flex bg-red-800 flex-row">
+
+
       <Filter
         cities={cities}
         specialties={specialties}
@@ -63,7 +66,7 @@ const DoctorsPage = () => {
         </div>
       ) : doctors.length > 0 ? (
         // Doctor Cards Grid
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 mt-6 pr-10">
           {doctors.map((doctor) => (
             <DoctorCard key={doctor._id} doctor={doctor} />
           ))}
@@ -71,6 +74,8 @@ const DoctorsPage = () => {
       ) : (
         <p className="text-center text-red-500 text-xl mt-10">No doctors found.</p>
       )}
+      </div>
+
     </div>
   );
 };

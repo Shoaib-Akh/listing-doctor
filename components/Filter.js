@@ -8,38 +8,40 @@ const Filter = ({
   onFilterChange,
   search,
 }) => {
+  // const searchIcon=<FaSearch className="text-gray-600" />
+
   return (
-    <div className="w-full  max-w-4xl mx-auto p-6 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-3xl shadow-xl backdrop-blur-md bg-opacity-80">
+    <div className="w-full  flex gap-6 flex-col  max-w-4xl mx-auto p-6 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-3xl shadow-xl backdrop-blur-md bg-opacity-80" style={{height:250,gap:20,backgroundColor:"rgba(67, 186, 127, 0.1);"}}>
       {/* Responsive Grid Layout */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+      
         
         {/* Search Input */}
-        <div className="relative w-full">
+        <div className="relative w-full ">
           <label className="text-gray-600 text-lg font-semibold mb-2 flex items-center gap-2">
-            <FaSearch className="text-gray-600" /> Search
+           
           </label>
           <input
             type="text"
             value={search}
-            placeholder="Search doctors..."
-            className="w-full p-4 rounded-lg border border-transparent bg-white/20 text-gray-600 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-300 ease-in-out"
+            placeholder={`Search doctors...`}
+            className="w-full p-4 rounded-full border border-transparent bg-white/20 text-gray-600 placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-300 ease-in-out"
             onChange={(e) => onFilterChange("search", e.target.value)}
           />
         </div>
 
         {/* City Filter */}
         <div className="relative w-full">
-          <label className="text-gray-600 text-lg font-semibold mb-2 flex items-center gap-2">
+          {/* <label className="text-gray-600 text-lg font-semibold mb-2 flex items-center gap-2">
             <FaCity className="text-gray-600" /> City
-          </label>
+          </label> */}
           <select
-            className="w-full p-4 rounded-lg border border-transparent bg-white/20 text-gray-600 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-300 ease-in-out"
+            className="w-full p-4 mt-2 rounded-full border border-transparent bg-white/20 text-gray-600 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-300 ease-in-out"
             value={selectedCity}
             onChange={(e) => onFilterChange("city", e.target.value)}
           >
-            <option value="" className="text-black font-medium">
+            {/* <option value="" className="text-black font-medium">
               All Cities
-            </option>
+            </option> */}
             {cities.map((city) => (
               <option key={city} value={city} className="text-black font-medium">
                 {city}
@@ -50,11 +52,11 @@ const Filter = ({
 
         {/* Specialty Filter */}
         <div className="relative">
-          <label className="text-gray-600 text-lg font-semibold mb-2 flex items-center gap-2">
+          {/* <label className="text-gray-600 text-lg font-semibold mb-2 flex items-center gap-2">
             <FaUserMd className="text-gray-600" /> Specialty
-          </label>
+          </label> */}
           <select
-            className="w-full p-4 rounded-lg   border border-transparent bg-white/20 text-gray-600 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-300 ease-in-out"
+            className="w-full p-4 rounded-full   border border-transparent bg-white/20 text-gray-600 focus:outline-none focus:ring-2 focus:ring-white focus:border-white transition-all duration-300 ease-in-out"
             value={selectedSpecialty}
             onChange={(e) => onFilterChange("specialty", e.target.value)}
           >
@@ -69,7 +71,7 @@ const Filter = ({
           </select>
         </div>
       </div>
-    </div>
+   
   );
 };
 

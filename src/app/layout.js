@@ -28,6 +28,9 @@ export default function RootLayout({ children }) {
           </div>
         </div>
 
+<div className="w-50  p-8 d-fle" style={{height:200,display:"flex",alignItems:"center",backgroundColor:"rgb(88, 88, 88)"}}>
+  <h2>Our Doctors</h2>
+</div>
         {/* -- MAIN CONTENT -- */}
         <main>{children}</main>
 
